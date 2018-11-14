@@ -2,20 +2,47 @@
 
 \begin{document}
 
+
+
+
 %capítulo
 \chapter{Ejercicio 2}
+
+The inputs of the system are $I$ and $S$, and the outputs are $B_1$ and $B_2$. If $B_1=1$ pump 1 is turned on, and if $B_2$ pump 1 is turned off. The same relation exists between $B_2$ and pump 2.
+
 \todo[inline]{State inputs outputs and future states}
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
-\begin{equation}
-	\tikzfig{moore_machine}
-end{equation}
+%\begin{equation}
+%	\tikzfig{moore_machine}
+%\end{equation}
 
 \subsection{State descriptions}
 
 
 
 \subsection{State transition table}
+
+\begin{table}[H]	%moore state descriptions
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+	\hline 
+	$y_0,y_1,y_2$/ W & 0 & 1 & output\\ 
+	\hline 
+	000 & 001 & 000 & 0\\ 
+	\hline 
+	001 & 011 & 000 & 0\\ 
+	\hline 
+	011 & 010 & 000 & 0\\ 
+	\hline 
+	010 & 110 & 000 & 0\\ 
+	\hline 
+	110 & 001 & 000 & 1\\ 
+	\hline 
+	\end{tabular} 
+	\caption{Possible states for the Moore-type FSM implementation.}
+	\label{tab:ej3_moore_states}
+\end{table}
 
 
 \subsection{Outputs and next states Karnaugh maps}
@@ -35,6 +62,25 @@ end{equation}
 
 
 \subsection{State transition table}
+
+\begin{table}[H]	%moore state descriptions
+	\centering
+		\begin{tabular}{|c|c|c|}
+		\hline 
+		$y_0,y_1$/W & 0 & 1 \\ 
+		\hline 
+		00 & 01/0 & 00/0 \\ 
+		\hline 
+		01 & 11/0 & 00/0 \\ 
+		\hline 
+		11 & 10/0 & 00/0 \\ 
+		\hline 
+		10 & 00/1 & 00/0 \\ 
+		\hline 
+		\end{tabular} 
+	\caption{Possible states for the Mealy-type FSM implementation.}
+	\label{tab:ej3_moore_states}
+\end{table}
 
 
 \subsection{Outputs and next states Karnaugh maps}
