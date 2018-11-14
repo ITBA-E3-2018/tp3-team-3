@@ -5,7 +5,11 @@
 %capítulo
 \chapter{Ejercicio 1}
 
-The inputs of the system are $I$ and $S$, and the outputs are $B_1$ and $B_2$. If $B_1=1$ pump 1 is turned on, and if $B_2$ pump 1 is turned off. The same relation exists between $B_2$ and pump 2.
+The inputs of the system are $A$, which feeds the FSM with the sequence 1-1-0-1 sequentially and $B$ which corresponds to the current bit of the sequence to compare. To create the sequential flow of $A$, 1-1-0-1 can be loaded in parallel to a shift register and then be shifted. A new auxiliary input $W$ which is simply an XOR of $A$ an $B$, so $W=0$ if $A=B$ and $W=1$ otherwise. This helps reduce the complexity of both FSM.
+
+The output is $Z=1$ if the sequence has been detected in the last clock cycle, and $Z=0$ otherwise.
+
+When a conclusion is reached (ie. when the input sequence is found to be the same as 1-1-0-1 or different) the FSM jumps to its first state.
 
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
@@ -63,6 +67,9 @@ The inputs of the system are $I$ and $S$, and the outputs are $B_1$ and $B_2$. I
 \end{table}
 
 \subsection{Outputs and next states Karnaugh maps}
+\todo[inline]{hacer copy paste de los kmap}
+
+
 
 \subsection{Outputs and next states schematics}
 %schematics as sum-of-products
@@ -152,7 +159,7 @@ The system can be implemented with a Mealy-type FSM with 4 states (see table \re
 The state transition and outputs are shown in table \ref{tab:ej1_mealy_transitions}. This can be separated in four other tables which correspond to the values of $Y_0$, $Y_1$, $B_1$, and $B_2$ for every combination of inputs and states ($I$, $S$, $y_0$ and $y_1$). Then, the minimal sum-of-products expressions for these variables are obtained. The result is shown below, while the procedure is presented in the appendix (section \ref{sec:ej1_appendix}). 
 
 \subsection{Outputs and next states Karnaugh maps}
-
+\todo[inline]{hacer copy paste de los kmap}
 
 \subsection{Output and next states schematics}
 %schematics as sum-of-products
@@ -180,4 +187,6 @@ The state transition and outputs are shown in table \ref{tab:ej1_mealy_transitio
 	\caption{$P_2$ schematic as a sum-of-products}
 	\label{fig:ej1_mealy_P2_schem}
 \end{figure}
+
+
 \end{document}
