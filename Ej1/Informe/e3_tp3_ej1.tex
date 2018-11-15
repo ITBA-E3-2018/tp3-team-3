@@ -5,42 +5,40 @@
 %capítulo
 \chapter{Ejercicio 1}
 
-The inputs of the system are $A$, which feeds the FSM with the sequence 1-1-0-1 sequentially and $B$ which corresponds to the current bit of the sequence to compare. To create the sequential flow of $A$, 1-1-0-1 can be loaded in parallel to a shift register and then be shifted. A new auxiliary input $W$ which is simply an XOR of $A$ an $B$, so $W=0$ if $A=B$ and $W=1$ otherwise. This helps reduce the complexity of both FSM.
-
-The output is $Z=1$ if the sequence has been detected in the last clock cycle, and $Z=0$ otherwise.
-
-When a conclusion is reached (ie. when the input sequence is found to be the same as 1-1-0-1 or different) the FSM jumps to its first state.
+The inputs of the system are $I$ and $S$, and the outputs are $P_1$ and $P_2$. If $P_1=1$ pump 1 is turned on, whereas if $P_1=0$ pump 1 is turned off. The same relation exists between $B_2$ and pump 2. Both FSMs created contemplate the case where the inputs change from $IS=00$ to $IS=11$ and viceversa. If these changes were considered impossible, both implementatios would have two states less. The choice between these two options is determined by the relation between the clock cycle and the rate at which the water level changes: if the clock is much faster, it is guaranteed that there will be no jumps from $IS=00$ to $IS=11$ or viceversa, it would be more conevnient to implement FSM's with less states.
 
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
+\begin{figure}[H]
 \begin{equation}
 	\tikzfig{moore_machine}
 \end{equation}
+\caption{Flow diagram for the Moore-type FSM implementation. Self loops were ommited for simplicity; they can be found in table \ref{tab:ej1_moore_states}}
+\end{figure}
 
 \subsection{State descriptions}
 \begin{table}[H]	%moore state descriptions
 	\centering
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 	\hline	
-	$y_0, y_1, y_2$ & Name & Initials & Description\\	
+	$y_0, y_1, y_2$ & Name & Initials & Description & $P_1$ $P_2$\\	
 	\hline 
-	000 & Single pump: 1 &SP1& Only pump 1 is on\\ 
+	000 & Single pump: 1 &SP1& Only pump 1 is on & 10\\ 
 	\hline 
-	001 & Full, next single pump: 2 &FNSP2 & Pump 1 and 2 are both off. The next pump to be turned on on its own is pump 2\\ 
+	001 & Full, next single pump: 2 &FNSP2 & Pump 1 \& 2 off. Next pump turned on alone: pump 2& 00\\ 
 	\hline	
-	011 & Empty, next single pump: 2 &ENSP2 & Pump 1 and 2 are both on. The next pump to be turned on on its own is pump 2\\ 
+	011 & Empty, next single pump: 2 &ENSP2 & Pump 1 \& 2 on. Next pump turned on alone: pump 2 & 11\\ 
 	\hline 
-	111 & Single pump: 2 & SP2 & Only pump 2 is on\\ 
+	111 & Single pump: 2 & SP2 & Only pump 2 is on & 01\\ 
 	\hline 
-	110 & Full, next single pump: 1 &FNSP1& Pump 1 and 2 are both off. The next pump to be turned on on its own is pump 1\\ 
+	110 & Full, next single pump: 1 &FNSP1& Pump 1 \& 2 off. Next pump turned on alone: pump 1 & 00\\ 
 	\hline	
-	100 & Empty, next single pump: 1 &ENSP1& Pump 1 and 2 are both on. The next pump to be turned on on its own is pump 1\\ 
+	100 & Empty, next single pump: 1 &ENSP1& Pump 1 \& 2 on. Next pump turned on alone: pump 1 & 11\\ 
 	\hline 
 	\end{tabular} 
 	\caption{Possible states for the Mealy-type FSM implementation.}
 	\label{tab:ej1_moore_states}
 \end{table}
-\todo[inline]{Agregar output a la tabla de estados de moore ej1}
 
 \subsection{State transition table}
 \begin{table}[H]	%moore state transition table
@@ -62,13 +60,40 @@ When a conclusion is reached (ie. when the input sequence is found to be the sam
 		ENSP1 & ENSP1 & ENSP1 & FNSP1 & SP1 \\ 
 		\hline 
 		\end{tabular} 
-	\caption[States transitions and outputs for the Mealy-type FSM implementation]{States transitions and outputs for the Mealy-type FSM implementation. Each cell has the format $state\, initials \,/\, B_1\, B_2$}
+	\caption[States transitions and outputs for the Mealy-type FSM implementation]{States transitions and outputs for the Mealy-type FSM implementation.}
 	\label{tab:ej1_moore_transitions}
 \end{table}
 
 \subsection{Outputs and next states Karnaugh maps}
-\todo[inline]{hacer copy paste de los kmap}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_moore_b1_kmap.jpg}
+	\caption{$P_1$ Karnaugh map}
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_moore_b2_kmap.jpg}
+	\caption{$P_2$ Karnaugh map}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej1_moore_y0_kmap.jpg}
+	\caption{$y_0$ Karnaugh map}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_moore_y1_kmap.jpg}
+	\caption{$y_1$ Karnaugh map}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej1_moore_y2_kmap.jpg}
+	\caption{$y_2$ Karnaugh map}
+\end{figure}
 
 
 \subsection{Outputs and next states schematics}
@@ -121,20 +146,18 @@ The system can be implemented with a Mealy-type FSM with 4 states (see table \re
 	\hline	
 	$y_0, y_1$ & Name & Initials & Description\\	
 	\hline 
-	00 & Single pump: 1 &SP1& Only pump 1 is on\\ 
+	00 & Single pump: 1 &SP1& Pump 1 on\\ 
 	\hline 
-	01 & Next single pump: 2 &NSP2& Pump 1 and 2 are both on or off. The next pump to be turned on on its own is pump 2\\ 
+	01 & Next single pump: 2 &NSP2& Pump 1 and 2 both on or off. Next pump turned on alone: pump 2\\ 
 	\hline 
 	11 & Single pump: 2 &SP2& Only pump 2 is on\\ 
 	\hline 
-	10 & Next single pump: 1 &NSP1& Pump 1 and 2 are both on or off. The next pump to be turned on on its own is pump 1 \\ 
+	10 & Next single pump: 1 &NSP1& Pump 1 and 2 both on or off. Next pump turned on alone: pump 1 \\ 
 	\hline 
 	\end{tabular} 
 	\caption{Possible states for the Mealy-type FSM implementation.}
 	\label{tab:ej1_mealy_states}
 \end{table}
-
-\todo[inline]{acomodar las tablas}
 
 \subsection{State transition table}
 \begin{table}[H]
@@ -159,7 +182,28 @@ The system can be implemented with a Mealy-type FSM with 4 states (see table \re
 The state transition and outputs are shown in table \ref{tab:ej1_mealy_transitions}. This can be separated in four other tables which correspond to the values of $Y_0$, $Y_1$, $B_1$, and $B_2$ for every combination of inputs and states ($I$, $S$, $y_0$ and $y_1$). Then, the minimal sum-of-products expressions for these variables are obtained. The result is shown below, while the procedure is presented in the appendix (section \ref{sec:ej1_appendix}). 
 
 \subsection{Outputs and next states Karnaugh maps}
-\todo[inline]{hacer copy paste de los kmap}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{figures/e3_tp3_ej1_mealy_b1_kmap.jpg}
+	\caption{$P_1$ Karnaugh map}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej1_mealy_b2_kmap.jpg}
+	\caption{$P_2$ Karnaugh map}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_mealy_y0_kmap.jpg}
+	\caption{$y_0$ Karnaugh map}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_mealy_y1_kmap.jpg}
+	\caption{$y_1$ Karnaugh map}
+\end{figure}
+
+
 
 \subsection{Output and next states schematics}
 %schematics as sum-of-products

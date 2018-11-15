@@ -5,14 +5,13 @@
 %capítulo
 \chapter{Ejercicio 3}
 
-
-The input of the system is $W$ and the output is $Z$. $Z=1$ if there has just been a transition from 0 to 1, and $Z=0$ otherwise.
+The input of the system is $W$ and the output is $Z$. $Z=1$ if there has just been a transition from 0 to 1, and $Z=0$ otherwise. 
 
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
-%\begin{equation}
-%	\tikzfig{moore_machine}
-%\end{equation}
+\begin{equation}
+	\tikzfig{moore_machine}
+\end{equation}
 
 \subsection{State descriptions}
 \begin{table}[H]	%mealy state descriptions
@@ -54,17 +53,35 @@ The input of the system is $W$ and the output is $Z$. $Z=1$ if there has just be
 
 \subsection{Outputs and next states Karnaugh maps}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej3_moore_y0_kmap.jpg}
+	\caption{$Y_0$ Karnaugh map}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej3_moore_y1_kmap.jpg}
+	\caption{$Y_1$ Karnaugh map}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{figures/e3_tp3_ej3_moore_z_kmap.jpg}
+	\caption{$Z$ Karnaugh map}
+\end{figure}
+
 \subsection{Outputs and next states schematics}
 %schematics as sum-of-products
 
 
 \section{Mealy-type FSM implementation}
 \subsection{FSM flow-chart}
-%\begin{equation}
-%	\tikzfig{mealy_machine}
-%\end{equation}
+\begin{equation}
+	\tikzfig{mealy_machine}
+\end{equation}
 
-The system can be implemented with a Mealy-type FSM with 4 states (see table \ref{tab:ej3_mealy_states}).
+The system can be implemented with a Mealy-type FSM with 2 states (see table \ref{tab:ej3_mealy_states}).
 
 \subsection{State descriptions}
 \begin{table}[H]	%mealy state descriptions
@@ -83,7 +100,6 @@ The system can be implemented with a Mealy-type FSM with 4 states (see table \re
 	\label{tab:ej3_mealy_states}
 \end{table}
 
-\todo[inline]{acomodar las tablas}
 
 \subsection{State transition table}
 \begin{table}[H]
@@ -104,6 +120,18 @@ The system can be implemented with a Mealy-type FSM with 4 states (see table \re
 The state transition and outputs are shown in table \ref{tab:ej3_mealy_transitions}. This can be separated in two other tables which correspond to the values of $Y_0$ and $Z$ for every combination of $y_0$ and $W$. Then, the minimal sum-of-products expressions for these variables are obtained. 
 
 \subsection{Outputs and next states Karnaugh maps}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej3_mealy_y0_kmap.jpg}
+	\caption{$Y_0$ Karnaugh map}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/e3_tp3_ej3_mealy_z_kmap.jpg}
+	\caption{$Z$ Karnaugh map}
+\end{figure}
 
 
 \subsection{Output and next states schematics}

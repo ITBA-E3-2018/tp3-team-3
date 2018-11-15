@@ -1,11 +1,11 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=estado] (0) at (0, 3) {Half full - pump: A};
-		\node [style=estado] (1) at (0, -3) {Half full - pump: B};
-		\node [style=estado] (2) at (9, 3) {Full - next pump: B};
-		\node [style=estado] (3) at (9, -3) {Empty - next pump: B};
-		\node [style=estado] (4) at (-9, -3) {Full - next pump: A};
-		\node [style=estado] (5) at (-9, 3) {Empty - next pump: A};
+		\node [style=estado] (0) at (0, 3) {SP1/10};
+		\node [style=estado] (1) at (0, -3) {SP2/01};
+		\node [style=estado] (2) at (9, 3) {FNSP2/00};
+		\node [style=estado] (3) at (9, -3) {ENSP2/11};
+		\node [style=estado] (4) at (-9, -3) {FNSP1/00};
+		\node [style=estado] (5) at (-9, 3) {ENSP1/11};
 		\node [style=none] (6) at (9, -3.75) {};
 		\node [style=none] (7) at (0.5, -3.75) {};
 		\node [style=none] (8) at (-0.5, -3.75) {};
@@ -38,24 +38,36 @@
 		\node [style=none] (35) at (9, -2.25) {};
 		\node [style=none] (36) at (8, -2.25) {};
 		\node [style=none] (37) at (8, 2.25) {};
+		\node [style=none] (38) at (-5, 5) {IS=10};
+		\node [style=none] (39) at (2, 1.75) {IS=00};
+		\node [style=none] (40) at (5, 5) {IS=11};
+		\node [style=none] (41) at (-6.5, 1.75) {IS=00};
+		\node [style=none] (42) at (11.25, 0) {IS=11};
+		\node [style=none] (43) at (8, 0) {IS=00};
+		\node [style=none] (44) at (-11.5, 0) {IS=11};
+		\node [style=none] (45) at (-7.75, 0) {IS=00};
+		\node [style=none] (46) at (-6.75, -1.75) {IS=10};
+		\node [style=none] (47) at (2, -1.75) {IS=10};
+		\node [style=none] (48) at (-5, -5) {IS=11};
+		\node [style=none] (49) at (5, -5) {IS=10};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=transicion] (24.center) to (22.center);
 		\draw [style=transicion] (23.center) to (25.center);
 		\draw [style=transicion] (34.center) to (32.center);
 		\draw [style=transicion] (33.center) to (35.center);
-		\draw [style=transicion, bend left=45] (16.center) to (20.center);
+		\draw [style=transicion, bend left] (16.center) to (20.center);
 		\draw [style=transicion] (20.center) to (21.center);
-		\draw [style=transicion, bend left=45] (21.center) to (17.center);
-		\draw [style=transicion, bend left=45] (14.center) to (18.center);
+		\draw [style=transicion, bend left] (21.center) to (17.center);
+		\draw [style=transicion, bend left] (14.center) to (18.center);
 		\draw [style=transicion] (18.center) to (19.center);
-		\draw [style=transicion, bend left=45] (19.center) to (15.center);
-		\draw [style=transicion, bend left=45] (8.center) to (12.center);
+		\draw [style=transicion, bend left] (19.center) to (15.center);
+		\draw [style=transicion, bend left] (8.center) to (12.center);
 		\draw [style=transicion] (12.center) to (13.center);
-		\draw [style=transicion, bend left=45] (13.center) to (9.center);
-		\draw [style=transicion, bend left=45] (6.center) to (10.center);
+		\draw [style=transicion, bend left] (13.center) to (9.center);
+		\draw [style=transicion, bend left] (6.center) to (10.center);
 		\draw [style=transicion] (10.center) to (11.center);
-		\draw [style=transicion, bend left=45] (11.center) to (7.center);
+		\draw [style=transicion, bend left] (11.center) to (7.center);
 		\draw [style=transicion, in=-90, out=90, looseness=0.75] (28.center) to (26.center);
 		\draw [style=transicion, in=-90, out=90, looseness=0.75] (27.center) to (30.center);
 		\draw [style=transicion, in=90, out=-90, looseness=0.75] (37.center) to (29.center);
