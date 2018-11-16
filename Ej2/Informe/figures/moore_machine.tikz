@@ -1,0 +1,47 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=estado] (0) at (-4, 0) {1 match};
+		\node [style=estado] (1) at (-8, 0) {0 match};
+		\node [style=estado] (2) at (4, 0) {3 match};
+		\node [style=none] (3) at (-8, 0.75) {};
+		\node [style=none] (4) at (-8.75, 0.75) {};
+		\node [style=none] (5) at (-7.25, 0.75) {};
+		\node [style=none] (6) at (-4.5, 0.75) {};
+		\node [style=none] (7) at (-3.5, 0.75) {};
+		\node [style=none] (8) at (3.5, 0.75) {};
+		\node [style=none] (10) at (-7.25, -1.25) {};
+		\node [style=none] (11) at (-4, -0.75) {};
+		\node [style=none] (12) at (4, -0.75) {};
+		\node [style=none] (13) at (-8.5, 1.5) {W=0};
+		\node [style=estado] (14) at (0, 0) {2 match};
+		\node [style=none] (15) at (-0.5, 0.75) {};
+		\node [style=none] (16) at (0.5, 0.75) {};
+		\node [style=none] (17) at (0, -0.75) {};
+		\node [style=none] (18) at (-8, -0.75) {};
+		\node [style=none] (19) at (-6, 1.5) {W=0};
+		\node [style=none] (20) at (-2, 1.5) {W=0};
+		\node [style=none] (21) at (2.25, 1.525) {W=0};
+		\node [style=none] (23) at (-7.5, -1.75) {W=1};
+		\node [style=estado] (24) at (8, 0) {4 match};
+		\node [style=none] (25) at (7.5, 0.75) {};
+		\node [style=none] (26) at (4.5, 0.75) {};
+		\node [style=none] (27) at (6.25, 1.525) {W=0};
+		\node [style=none] (28) at (8, -0.75) {};
+		\node [style=none] (29) at (8.5, 0.75) {};
+		\node [style=none] (30) at (-4, 0.75) {};
+		\node [style=none] (31) at (2, 4) {W=0};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=transicion, bend left=75, looseness=1.25] (4.center) to (3.center);
+		\draw [style=transicion, bend left, looseness=0.50] (5.center) to (6.center);
+		\draw [style=transicion, bend left, looseness=0.50] (7.center) to (15.center);
+		\draw [style=transicion, bend left, looseness=0.50] (16.center) to (8.center);
+		\draw [style=transicion, bend left] (12.center) to (10.center);
+		\draw [style=transicion, bend left] (17.center) to (10.center);
+		\draw [style=transicion, bend left, looseness=0.75] (11.center) to (10.center);
+		\draw [style=transicion, bend right, looseness=0.25] (10.center) to (18.center);
+		\draw [style=transicion, bend left, looseness=0.50] (26.center) to (25.center);
+		\draw [style=transicion, bend right=90, looseness=0.75] (29.center) to (30.center);
+		\draw [style=transicion, bend left] (28.center) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

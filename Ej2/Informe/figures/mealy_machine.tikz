@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=estado] (0) at (-3, 0) {1 match};
+		\node [style=estado] (1) at (-9, 0) {0 match};
+		\node [style=estado] (2) at (9, 0) {3 match};
+		\node [style=none] (3) at (-9, 0.75) {};
+		\node [style=none] (4) at (-9.75, 0.75) {};
+		\node [style=none] (5) at (-8.25, 0.75) {};
+		\node [style=none] (6) at (-3.5, 0.75) {};
+		\node [style=none] (7) at (-2.5, 0.75) {};
+		\node [style=none] (9) at (9, 0.75) {};
+		\node [style=none] (11) at (-9.75, -0.75) {};
+		\node [style=none] (12) at (-7.25, -1.75) {};
+		\node [style=none] (13) at (-3, -0.75) {};
+		\node [style=none] (14) at (9, -0.75) {};
+		\node [style=none] (15) at (-9.5, 1.5) {W=0/Z=0};
+		\node [style=estado] (21) at (3, 0) {2 match};
+		\node [style=none] (22) at (2.5, 0.75) {};
+		\node [style=none] (23) at (3.5, 0.75) {};
+		\node [style=none] (24) at (3, -0.75) {};
+		\node [style=none] (25) at (-9, -0.75) {};
+		\node [style=none] (26) at (-6, 2) {W=0/Z=0};
+		\node [style=none] (29) at (0, 2) {W=0/Z=0};
+		\node [style=none] (30) at (6.5, 2.025) {W=0/Z=0};
+		\node [style=none] (31) at (-0.75, -4) {W=0/Z=1};
+		\node [style=none] (32) at (-6, -1) {W=1/Z=0};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=transicion, bend left=90, looseness=2.25] (4.center) to (3.center);
+		\draw [style=transicion, bend left=90, looseness=0.50] (5.center) to (6.center);
+		\draw [style=transicion, bend left=90, looseness=0.50] (14.center) to (11.center);
+		\draw [style=transicion, bend left=90, looseness=0.50] (7.center) to (22.center);
+		\draw [style=transicion, bend left=90, looseness=0.50] (23.center) to (9.center);
+		\draw [style=transicion, bend left=15] (14.center) to (12.center);
+		\draw [style=transicion, bend left=15] (24.center) to (12.center);
+		\draw [style=transicion, bend left, looseness=0.75] (13.center) to (12.center);
+		\draw [style=transicion, bend right=345, looseness=0.25] (12.center) to (25.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
