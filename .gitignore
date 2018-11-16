@@ -309,3 +309,6 @@ TSWLatexianTemp*
 
 
 # End of https://www.gitignore.io/api/latex,altium
+*.swp
+Ej3/bin/example
+*.save
