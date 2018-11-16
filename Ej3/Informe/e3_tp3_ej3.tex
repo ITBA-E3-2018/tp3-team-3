@@ -3,15 +3,17 @@
 \begin{document}
 
 %capítulo
-\chapter{Ejercicio 3}
+\chapter{}
 
 The input of the system is $W$ and the output is $Z$. $Z=1$ if there has just been a transition from 0 to 1, and $Z=0$ otherwise. 
 
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
-\begin{equation}
-	\tikzfig{moore_machine}
-\end{equation}
+\begin{figure}[H]
+	\centering
+	\input{figures/moore_machine.tikz}
+	\caption{Flow diagram for the Moore-type FSM implementation.}
+\end{figure}
 
 \subsection{State descriptions}
 \begin{table}[H]	%mealy state descriptions
@@ -72,16 +74,31 @@ The input of the system is $W$ and the output is $Z$. $Z=1$ if there has just be
 \end{figure}
 
 \subsection{Outputs and next states schematics}
-%schematics as sum-of-products
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y0_schem_moore.PNG}
+	\caption{$Y_0$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y1_schem_moore.PNG}
+	\caption{$Y_1$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Z_schem_moore.PNG}
+	\caption{$Y_2$ schematic as a sum-of-products}
+\end{figure}
+
 
 
 \section{Mealy-type FSM implementation}
 \subsection{FSM flow-chart}
-\begin{equation}
-	\tikzfig{mealy_machine}
-\end{equation}
-
-The system can be implemented with a Mealy-type FSM with 2 states (see table \ref{tab:ej3_mealy_states}).
+\begin{figure}[H]
+	\centering
+	\input{figures/mealy_machine.tikz}
+	\caption{Flow diagram for the Mealy-type FSM implementation.}
+\end{figure}
 
 \subsection{State descriptions}
 \begin{table}[H]	%mealy state descriptions
@@ -117,8 +134,6 @@ The system can be implemented with a Mealy-type FSM with 2 states (see table \re
 	\label{tab:ej3_mealy_transitions}
 \end{table}
 
-The state transition and outputs are shown in table \ref{tab:ej3_mealy_transitions}. This can be separated in two other tables which correspond to the values of $Y_0$ and $Z$ for every combination of $y_0$ and $W$. Then, the minimal sum-of-products expressions for these variables are obtained. 
-
 \subsection{Outputs and next states Karnaugh maps}
 
 \begin{figure}[H]
@@ -135,7 +150,16 @@ The state transition and outputs are shown in table \ref{tab:ej3_mealy_transitio
 
 
 \subsection{Output and next states schematics}
-%schematics as sum-of-products
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y0_schem_mealy.PNG}
+	\caption{$Y_0$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Z_schem_mealy.PNG}
+	\caption{$Z$ schematic as a sum-of-products}
+\end{figure}
 
 
 \end{document}

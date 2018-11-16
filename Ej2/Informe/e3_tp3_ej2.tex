@@ -6,11 +6,11 @@
 
 
 %capítulo
-\chapter{Ejercicio 2}
+\chapter{}
 
 
 
-The inputs of the system are $A$, which feeds the FSM with the sequence 1-1-0-1 sequentially and $B$ which corresponds to the current bit of the sequence to compare. To create the sequential flow of $A$, 1-1-0-1 can be loaded in parallel to a shift register and then be shifted. A new auxiliary input $W$ which is simply an XOR of $A$ an $B$, so $W=0$ if $A=B$ and $W=1$ otherwise. This helps reduce the complexity of both FSM.
+The inputs of the system are $A$, which feeds the FSM with the sequence 1-1-0-1 sequentially and $B$ which corresponds to the current bit of the sequence to compare. To create the sequential flow of $A$, 1-1-0-1 can be loaded in parallel to a shift register and then be shifted. A new auxiliary input $W$ which is simply an XOR of $A$ an $B$, so $W=0$ if $A=B$ and $W=1$ otherwise. This helps reduce the complexity of both FSM's and allows them to be used for to compare against any 4-bit sequence.
 
 The output is $Z=1$ if the sequence has been detected in the last clock cycle, and $Z=0$ otherwise.
 
@@ -18,10 +18,12 @@ When a conclusion is reached (ie. when the input sequence is found to be the sam
 
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
-\begin{equation}
-	\tikzfig{moore_machine}
-\end{equation}
 
+\begin{figure}[H]
+	\centering
+	\input{figures/moore_machine.tikz}
+	\caption{Flow diagram for the Moore-type FSM implementation.}
+\end{figure}
 \subsection{State descriptions}
 \begin{table}[H]	%moore state descriptions
 	\centering
@@ -90,14 +92,31 @@ When a conclusion is reached (ie. when the input sequence is found to be the sam
 
 
 \subsection{Outputs and next states schematics}
-%schematics as sum-of-products
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y0_schem.PNG}
+	\caption{$Y_0$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y1_schem.PNG}
+	\caption{$Y_1$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y2_schem.PNG}
+	\caption{$Y_2$ schematic as a sum-of-products}
+\end{figure}
+
 
 
 \section{Mealy-type FSM implementation}
 \subsection{FSM flow-chart}
-\begin{equation}
-	\tikzfig{mealy_machine}
-\end{equation}
+\begin{figure}[H]
+	\centering
+	\input{figures/mealy_machine.tikz}
+	\caption{Flow diagram for the Mealy-type FSM implementation.}
+\end{figure}
 
 
 \subsection{State descriptions}
@@ -164,7 +183,21 @@ When a conclusion is reached (ie. when the input sequence is found to be the sam
 \end{figure}
 
 \subsection{Output and next states schematics}
-%schematics as sum-of-products
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y0_schem_mealy.PNG}
+	\caption{$Y_0$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Y1_schem_mealy.PNG}
+	\caption{$Y_1$ schematic as a sum-of-products}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/Z_schem_mealy.PNG}
+	\caption{$Y_2$ schematic as a sum-of-products}
+\end{figure}
 
 
 

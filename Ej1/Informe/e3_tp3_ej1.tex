@@ -3,17 +3,16 @@
 \begin{document}
 
 %capítulo
-\chapter{Ejercicio 1}
+\chapter{}
 
-The inputs of the system are $I$ and $S$, and the outputs are $P_1$ and $P_2$. If $P_1=1$ pump 1 is turned on, whereas if $P_1=0$ pump 1 is turned off. The same relation exists between $B_2$ and pump 2. Both FSMs created contemplate the case where the inputs change from $IS=00$ to $IS=11$ and viceversa. If these changes were considered impossible, both implementatios would have two states less. The choice between these two options is determined by the relation between the clock cycle and the rate at which the water level changes: if the clock is much faster, it is guaranteed that there will be no jumps from $IS=00$ to $IS=11$ or viceversa, it would be more conevnient to implement FSM's with less states.
+The inputs of the system are $I$ and $S$, and the outputs are $P_1$ and $P_2$. If $P_1=1$ pump 1 is turned on, whereas if $P_1=0$ pump 1 is turned off. The same relation exists between $B_2$ and pump 2. Both FSM's created contemplate the case where the inputs change from $IS=00$ to $IS=11$ and viceversa. If these changes were considered impossible, both implementations would have two states less. The choice between these two options is determined by the relation between the clock cycle and the rate at which the water level changes: if the clock is much faster, it is guaranteed that there will be no jumps from $IS=00$ to $IS=11$ or viceversa, it would be more convenient to implement FSM's with less states.
 
 \section{Moore-type FSM implementation}
 \subsection{FSM flow-chart}
 \begin{figure}[H]
-\begin{equation}
-	\tikzfig{moore_machine}
-\end{equation}
-\caption{Flow diagram for the Moore-type FSM implementation. Self loops were ommited for simplicity; they can be found in table \ref{tab:ej1_moore_states}}
+	\centering
+	\input{figures/moore_machine.tikz}
+	\caption{Flow diagram for the Moore-type FSM implementation. Self loops were ommited for simplicity; they can be found in table \ref{tab:ej1_moore_states}}
 \end{figure}
 
 \subsection{State descriptions}
@@ -80,24 +79,36 @@ The inputs of the system are $I$ and $S$, and the outputs are $P_1$ and $P_2$. I
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{figures/e3_tp3_ej1_moore_y0_kmap.jpg}
-	\caption{$y_0$ Karnaugh map}
+	\caption{$Y_0$ Karnaugh map}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_moore_y1_kmap.jpg}
-	\caption{$y_1$ Karnaugh map}
+	\caption{$Y_1$ Karnaugh map}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{figures/e3_tp3_ej1_moore_y2_kmap.jpg}
-	\caption{$y_2$ Karnaugh map}
+	\caption{$Y_2$ Karnaugh map}
 \end{figure}
 
 
 \subsection{Outputs and next states schematics}
 %schematics as sum-of-products
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/moore_B1_schem.PNG}
+	\caption{$P_1$ schematic as a sum-of-products}
+	\label{fig:ej1_moore_P1_schem}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figures/moore_B2_schem.PNG}
+	\caption{$P_2$ schematic as a sum-of-products}
+	\label{fig:ej1_moore_P2_schem}
+\end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics{figures/moore_Y0_schem.PNG}
@@ -116,28 +127,18 @@ The inputs of the system are $I$ and $S$, and the outputs are $P_1$ and $P_2$. I
 	\caption{$Y_2$ schematic as a sum-of-products}
 	\label{fig:ej1_moore_Y2_schem}
 \end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics{figures/moore_B1_schem.PNG}
-	\caption{$P_1$ schematic as a sum-of-products}
-	\label{fig:ej1_moore_P1_schem}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=1]{figures/moore_B2_schem.PNG}
-	\caption{$P_2$ schematic as a sum-of-products}
-	\label{fig:ej1_moore_P2_schem}
-\end{figure}
+
 
 
 
 \section{Mealy-type FSM implementation}
 \subsection{FSM flow-chart}
-\begin{equation}
-	\tikzfig{mealy_machine}
-\end{equation}
+\begin{figure}[H]
+	\centering
+	\input{figures/mealy_machine.tikz}
+	\caption{Flow diagram for the Mealy-type FSM implementation.}
+\end{figure}
 
-The system can be implemented with a Mealy-type FSM with 4 states (see table \ref{tab:ej1_mealy_states}).
 
 \subsection{State descriptions}
 \begin{table}[H]	%mealy state descriptions
@@ -179,7 +180,6 @@ The system can be implemented with a Mealy-type FSM with 4 states (see table \re
 	\label{tab:ej1_mealy_transitions}
 \end{table}
 
-The state transition and outputs are shown in table \ref{tab:ej1_mealy_transitions}. This can be separated in four other tables which correspond to the values of $Y_0$, $Y_1$, $B_1$, and $B_2$ for every combination of inputs and states ($I$, $S$, $y_0$ and $y_1$). Then, the minimal sum-of-products expressions for these variables are obtained. The result is shown below, while the procedure is presented in the appendix (section \ref{sec:ej1_appendix}). 
 
 \subsection{Outputs and next states Karnaugh maps}
 \begin{figure}[H]
@@ -195,30 +195,17 @@ The state transition and outputs are shown in table \ref{tab:ej1_mealy_transitio
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_mealy_y0_kmap.jpg}
-	\caption{$y_0$ Karnaugh map}
+	\caption{$Y_0$ Karnaugh map}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{figures/e3_tp3_ej1_mealy_y1_kmap.jpg}
-	\caption{$y_1$ Karnaugh map}
+	\caption{$Y_1$ Karnaugh map}
 \end{figure}
 
 
 
 \subsection{Output and next states schematics}
-%schematics as sum-of-products
-\begin{figure}[H]
-	\centering
-	\includegraphics{figures/mealy_Y0_schem.PNG}
-	\caption{$Y_0$ schematic as a sum-of-products}
-	\label{fig:ej1_mealy_Y0_schem}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics{figures/mealy_Y1_schem.PNG}
-	\caption{$Y_1$ schematic as a sum-of-products}
-	\label{fig:ej1_mealy_Y1_schem}
-\end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics{figures/mealy_B1_schem.PNG}
@@ -231,6 +218,19 @@ The state transition and outputs are shown in table \ref{tab:ej1_mealy_transitio
 	\caption{$P_2$ schematic as a sum-of-products}
 	\label{fig:ej1_mealy_P2_schem}
 \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/mealy_Y0_schem.PNG}
+	\caption{$Y_0$ schematic as a sum-of-products}
+	\label{fig:ej1_mealy_Y0_schem}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{figures/mealy_Y1_schem.PNG}
+	\caption{$Y_1$ schematic as a sum-of-products}
+	\label{fig:ej1_mealy_Y1_schem}
+\end{figure}
+
 
 
 \end{document}
